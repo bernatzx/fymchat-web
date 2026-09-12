@@ -1,9 +1,37 @@
 import React, { useState } from 'react'
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { TiEqualsOutline } from "react-icons/ti";
+import { paraphrase } from '../services/paraphrase';
 
 function Paraphrase() {
   const [masukkan, setMasukkan] = useState('');
+  const [hasil, setHasil] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleParaphrase = async () => {
+    if (!masukkan.trim() || loading) return;
+
+    try {
+      setLoading(true);
+      setError("");
+      setHasil(null);
+
+      const result = await paraphrase(masukkan);
+
+      setHasil(result);
+    } catch (error) {
+      setError("Failed to paraphrase.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleClear = () => {
+    setMasukkan("");
+    setHasil(null);
+    setError("");
+  };
 
   return (
     <div className='flex justify-center'>
@@ -27,12 +55,23 @@ function Paraphrase() {
                 onChange={(e) => setMasukkan(e.target.value)}
                 autoFocus
               ></textarea>
-              <div className='place-self-end flex items-center gap-2 green-bg-color text-white hover:opacity-65 cursor-pointer py-1 px-4 rounded-full '>
-                Paraphrase
+              <div
+                onClick={handleParaphrase}
+                className={`place-self-end flex items-center gap-2 green-bg-color text-white py-1 px-4 rounded-full ${loading || !masukkan.trim()
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:opacity-65 cursor-pointer"
+                  }`}>
+                {loading ? (
+                  <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <>
+                    Paraphrase
+                  </>
+                )}
               </div>
 
               {masukkan && (
-                <div onClick={() => setMasukkan('')} className="absolute bottom-1 text-gray-600 cursor-pointer hover:opacity-65">
+                <div onClick={handleClear} className="absolute bottom-1 text-gray-600 cursor-pointer hover:opacity-65">
                   <FaRegTrashAlt />
                 </div>
               )}
@@ -40,9 +79,20 @@ function Paraphrase() {
             <div className="w-[1px] bg-gray-300"></div>
 
             {/* RESULT */}
-            <div className="h-[185px] w-full overflow-y-auto break-words no-scrollbar"></div>
+            <div className="h-[185px] w-full overflow-y-auto break-words no-scrollbar">
+              {hasil && (
+                hasil.paraphrased_text
+              )}
+            </div>
           </div>
         </div>
+
+        {/* ERROR */}
+        {error && (
+          <div className="text-sm text-red-500">
+            {error}
+          </div>
+        )}
       </div>
     </div>
   )
