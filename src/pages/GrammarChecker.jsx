@@ -38,7 +38,7 @@ function GrammarChecker() {
 
   return (
     <div className='flex justify-center'>
-      <div className="flex-col w-4/5 md:w-3/5 space-y-5">
+      <div className="flex-col w-11/12 md:w-3/5 space-y-5">
         {/* INPUT */}
         <div className='text-center'>
           <div className='place-self-center text-8xl bg-red-200 text-red-500 rounded-full p-5 mb-3 shadow-md'>
