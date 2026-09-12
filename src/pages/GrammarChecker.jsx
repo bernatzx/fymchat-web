@@ -1,31 +1,79 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaArrowRight } from "react-icons/fa";
+import { LuSpellCheck } from "react-icons/lu";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { RiRobot2Line } from "react-icons/ri";
 
 function GrammarChecker() {
+  const [masukkan, setMasukkan] = useState('');
+  const [hasil, setHasil] = useState(false);
+
   return (
-    <div className='flex justify-center py-20'>
+    <div className='flex justify-center'>
       <div className="flex-col w-4/5 md:w-3/5 space-y-5">
+        {/* INPUT */}
         <div className='text-center'>
-          <div className='text-3xl font-semibold'>Grammar Checker</div>
+          <div className='place-self-center text-8xl bg-red-200 text-red-500 rounded-full p-5 mb-3 shadow-md'>
+            <LuSpellCheck />
+          </div>
+          <div className='text-3xl font-medium'>Grammar Checker</div>
           <div className='text-gray-600 text-sm'>Fix spelling, grammar, punctuation</div>
         </div>
 
-        <div className='light-green border-green-300 border p-2 rounded-lg shadow-md'>
-          <div className='white-color rounded-lg p-3'>
+        <div className='light-green-bg-color border-green-300 border p-1 rounded-lg shadow-md'>
+          <div className='white-bg-color rounded-lg p-3 relative'>
             <textarea
               placeholder="Let's write!"
-              className='h-[150px] resize-none w-full bg-transparent outline-none'
+              className='h-[180px] resize-none w-full bg-transparent outline-none'
+              value={masukkan}
+              onChange={(e) => setMasukkan(e.target.value)}
               autoFocus
-              name=""
-              id=""
             ></textarea>
-            <div className='cursor-pointer hover:opacity-65 place-self-end light-green border-green-300 border p-2 rounded-full text-xl text-gray-400'>
-              <FaArrowRight />
+
+            {masukkan && (
+              <div className='text-gray-600 cursor-pointer hover:opacity-65 absolute bottom-4'>
+                <FaRegTrashAlt onClick={() => setMasukkan('')} />
+              </div>
+            )}
+
+            <div
+              onClick={() => setHasil(!hasil)}
+              className='place-self-end cursor-pointer hover:opacity-65 light-green-bg-color border-green-300 border p-2 rounded-full text-xl text-gray-400'
+            ><FaArrowRight />
             </div>
           </div>
         </div>
+
+        {/* RESULT */}
+        {hasil && (
+          <div className='light-green-bg-color border-green-300 border p-1 rounded-lg shadow-md'>
+            <div className='p-3 flex gap-2 items-center relative'>
+              <div className='text-lg bg-red-200 text-red-500  p-2 rounded-lg'>
+                <RiRobot2Line />
+              </div>
+              <div className='leading-none'>
+                <span className='font-medium'>
+                  Writing assistant
+                </span>
+                <br />
+                <span className='text-xs font-medium text-gray-500'>
+                  Grammar corrections
+                </span>
+              </div>
+
+              <div
+                onClick={() => setHasil(false)}
+                className="absolute right-3 text-gray-600 cursor-pointer hover:opacity-65"
+              ><FaRegTrashAlt />
+              </div>
+            </div>
+            <div className='white-bg-color text-sm rounded-lg p-3'>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem, minus enim! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque culpa laborum labore accusamus ex, recusandae omnis, magni iure ipsam placeat nobis necessitatibus reiciendis! Earum reprehenderit vel minima cumque amet nisi.
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </div >
   )
 }
 

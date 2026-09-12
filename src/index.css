@@ -5,15 +5,27 @@
 @tailwind utilities;
 
 @layer components {
-  .light-green {
+  .green-bg-color {
+    @apply bg-[#41ab5d];
+  }
+
+  .light-green-bg-color {
     @apply bg-[#e5f5e0];
   }
 
-  .white-color {
+  .white-bg-color {
     @apply bg-gray-50;
   }
 
-  .gray-border {
+  .gray-border-color {
     @apply border-gray-200;
   }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
 }

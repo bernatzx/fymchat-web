@@ -4,6 +4,7 @@ import Layout from './layout'
 import GrammarChecker from './pages/GrammarChecker'
 import Translator from './pages/Translator'
 import Paraphrase from './pages/Paraphrase'
+import Home from './pages/Home'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,7 +12,8 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
-        <Route index element={<GrammarChecker />} />
+        <Route index element={<Home />} />
+        <Route path='/grammarchecker' element={<GrammarChecker />} />
         <Route path='/translator' element={<Translator />} />
         <Route path='/paraphrase' element={<Paraphrase />} />
       </Route>
