@@ -5,7 +5,15 @@
 @tailwind utilities;
 
 @layer components {
-  .bg-color {
+  .light-green {
     @apply bg-[#e5f5e0];
+  }
+
+  .white-color {
+    @apply bg-gray-50;
+  }
+
+  .gray-border {
+    @apply border-gray-200;
   }
 }

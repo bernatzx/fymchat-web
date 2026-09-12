@@ -2,7 +2,12 @@ import React from 'react'
 
 function Paraphrase() {
   return (
-    <div>Paraphrase</div>
+    <div>
+      <div>
+        <div>Paraphrase</div>
+        <div>Rewrite and refine text</div>
+      </div>
+    </div>
   )
 }
 

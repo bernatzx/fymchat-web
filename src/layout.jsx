@@ -5,9 +5,9 @@ import Footer from './partials/Footer'
 
 function Layout() {
   return (
-    <div className='font-poppins bg-color px-3 pt-3'>
+    <div className='font-poppins light-green px-3 pt-3'>
       <Header />
-      <div className='bg-gray-100 border-gray-200 border-2 p-3 rounded-tl-xl rounded-tr-xl'>
+      <div className='white-color gray-border border-2 p-3 rounded-tl-xl rounded-tr-xl'>
         <Outlet />
         <Footer />
       </div>
