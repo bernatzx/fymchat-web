@@ -59,8 +59,8 @@ function GrammarChecker() {
             ></textarea>
 
             {masukkan && (
-              <div className='text-gray-600 cursor-pointer hover:opacity-65 absolute bottom-4'>
-                <FaRegTrashAlt onClick={handleClear} />
+              <div onClick={handleClear} className='text-gray-600 cursor-pointer hover:opacity-65 absolute bottom-4'>
+                <FaRegTrashAlt />
               </div>
             )}
 
