@@ -101,6 +101,14 @@ function Translator() {
           </div>
         </div>
 
+
+        {/* ERROR */}
+        {error && (
+          <div className="text-sm text-red-500">
+            {error}
+          </div>
+        )}
+
       </div>
     </div>
   )
