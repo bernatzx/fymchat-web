@@ -52,7 +52,7 @@ function GrammarChecker() {
           <div className='white-bg-color rounded-lg p-3 relative'>
             <textarea
               placeholder="Let's write!"
-              className='h-[180px] resize-none w-full bg-transparent outline-none'
+              className='h-[180px] text-sm md:text-base resize-none w-full bg-transparent outline-none'
               value={masukkan}
               onChange={(e) => setMasukkan(e.target.value)}
               autoFocus
@@ -66,7 +66,7 @@ function GrammarChecker() {
 
             <div
               onClick={handleCheckGrammar}
-              className={`place-self-end light-green-bg-color border-green-300 border p-2 rounded-full text-xl text-gray-400 ${loading || !masukkan.trim()
+              className={`place-self-end light-green-bg-color border-green-300 border p-2 rounded-full md:text-xl text-gray-400 ${loading || !masukkan.trim()
                 ? "opacity-50 cursor-not-allowed"
                 : "cursor-pointer hover:opacity-65"
                 }`}

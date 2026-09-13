@@ -57,7 +57,7 @@ function Paraphrase() {
               ></textarea>
               <div
                 onClick={handleParaphrase}
-                className={`md:mb-0 mb-2 place-self-end flex items-center gap-2 green-bg-color text-white py-1 px-4 rounded-full ${loading || !masukkan.trim()
+                className={`md:mb-0 mb-2 place-self-end text-sm md:text-base flex items-center gap-2 green-bg-color text-white py-1 px-4 rounded-full ${loading || !masukkan.trim()
                   ? "opacity-50 cursor-not-allowed"
                   : "hover:opacity-65 cursor-pointer"
                   }`}>

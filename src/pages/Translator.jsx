@@ -51,7 +51,7 @@ function Translator() {
           <div className='white-bg-color rounded-lg p-3 space-y-3 relative'>
             <div className='flex flex-col md:flex-row justify-between md:space-x-3 md:h-[180px] relative'>
               <textarea
-                className="h-[200px] md:h-full w-full resize-none bg-transparent outline-none"
+                className="h-[200px] text-sm md:text-base md:h-full w-full resize-none bg-transparent outline-none"
                 placeholder='Enter text'
                 value={masukkan}
                 onChange={(e) => setMasukkan(e.target.value)}
@@ -88,7 +88,7 @@ function Translator() {
                 </div>
 
                 <div onClick={handleTranslate}
-                  className={`md:hidden flex items-center gap-2 green-bg-color text-white py-1 px-4 rounded-full ${loading || !masukkan.trim() || !target.trim()
+                  className={`md:hidden flex items-center text-sm md:text-base gap-2 green-bg-color text-white py-1 px-4 rounded-full ${loading || !masukkan.trim() || !target.trim()
                     ? "opacity-50 cursor-not-allowed"
                     : "hover:opacity-65 cursor-pointer"
                     }`}
