@@ -46,10 +46,10 @@ function Paraphrase() {
         </div>
 
         <div className='light-green-bg-color border-green-300 border p-1 rounded-lg shadow-md'>
-          <div className='white-bg-color rounded-lg p-3 flex justify-between space-x-3'>
+          <div className='white-bg-color rounded-lg p-3 flex flex-col md:flex-row justify-between md:space-x-3'>
             <div className='w-full flex-col relative'>
               <textarea
-                className="h-[185px] w-full resize-none bg-transparent outline-none"
+                className="h-[185px] text-sm md:text-base w-full resize-none bg-transparent outline-none"
                 placeholder='To rewrite text, enter text here and press "Paraphrase".'
                 value={masukkan}
                 onChange={(e) => setMasukkan(e.target.value)}
@@ -57,7 +57,7 @@ function Paraphrase() {
               ></textarea>
               <div
                 onClick={handleParaphrase}
-                className={`place-self-end flex items-center gap-2 green-bg-color text-white py-1 px-4 rounded-full ${loading || !masukkan.trim()
+                className={`md:mb-0 mb-2 place-self-end flex items-center gap-2 green-bg-color text-white py-1 px-4 rounded-full ${loading || !masukkan.trim()
                   ? "opacity-50 cursor-not-allowed"
                   : "hover:opacity-65 cursor-pointer"
                   }`}>
@@ -77,6 +77,7 @@ function Paraphrase() {
               )}
             </div>
             <div className="w-[1px] bg-gray-300"></div>
+            <div className="h-[1px] bg-gray-300"></div>
 
             {/* RESULT */}
             <div className="h-[185px] w-full overflow-y-auto break-words no-scrollbar">
