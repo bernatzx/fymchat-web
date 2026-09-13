@@ -49,9 +49,9 @@ function Translator() {
 
         <div className='light-green-bg-color border-green-300 border p-1 rounded-lg shadow-md'>
           <div className='white-bg-color rounded-lg p-3 space-y-3 relative'>
-            <div className='flex justify-between space-x-3 h-[180px] relative'>
+            <div className='flex flex-col md:flex-row justify-between md:space-x-3 md:h-[180px] relative'>
               <textarea
-                className="h-full w-full resize-none bg-transparent outline-none"
+                className="h-[200px] md:h-full w-full resize-none bg-transparent outline-none"
                 placeholder='Enter text'
                 value={masukkan}
                 onChange={(e) => setMasukkan(e.target.value)}
@@ -59,33 +59,57 @@ function Translator() {
               ></textarea>
 
               {masukkan && (
-                <div onClick={handleClear} className="text-gray-600 cursor-pointer hover:opacity-65 absolute flex justify-center left-[390px]">
+                <div onClick={handleClear} className="text-gray-600 cursor-pointer hover:opacity-65 absolute flex justify-center left-[275px] md:left-[385px]">
                   <FaRegTrashAlt />
                 </div>
               )}
 
               <div className="w-[1px] bg-gray-300"></div>
+              <div className="h-[1px] bg-gray-300"></div>
 
               {/* RESULT */}
-              <div className="h-full w-full no-scrollbar">
+              <div className="h-[200px] md:h-full w-full no-scrollbar">
                 {hasil && (
                   hasil.translated_text
                 )}
               </div>
 
 
+              <div className='absolute md:bottom-[-44px] md:pb-0 pb-3 bottom-1/2 flex justify-between w-full'>
+
+                <div className="text-xs flex border py-1 px-3 text-gray-600 rounded-full">
+                  <select
+                    value={target}
+                    onChange={(e) => setTarget(e.target.value)}
+                  >
+                    <option value="english">English</option>
+                    <option value="bahasa indonesia">Indonesia</option>
+                  </select>
+                </div>
+
+                <div onClick={handleTranslate}
+                  className={`md:hidden flex items-center gap-2 green-bg-color text-white py-1 px-4 rounded-full ${loading || !masukkan.trim() || !target.trim()
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:opacity-65 cursor-pointer"
+                    }`}
+                >
+                  {loading ? (
+                    <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      <FaArrowRight /> Translate
+                    </>
+                  )}
+                </div>
+
+              </div>
+
+
+
             </div>
-            <div className="absolute text-xs border py-1 px-3 text-gray-600 rounded-full">
-              <select
-                value={target}
-                onChange={(e) => setTarget(e.target.value)}
-              >
-                <option value="english">English</option>
-                <option value="bahasa indonesia">Indonesia</option>
-              </select>
-            </div>
+
             <div onClick={handleTranslate}
-              className={`place-self-center overflow-y-auto break-words flex items-center gap-2 green-bg-color text-white py-1 px-4 rounded-full ${loading || !masukkan.trim() || !target.trim()
+              className={`md:place-self-center place-self-end hidden md:flex items-center gap-2 green-bg-color text-white py-1 px-4 rounded-full ${loading || !masukkan.trim() || !target.trim()
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:opacity-65 cursor-pointer"
                 }`}
@@ -98,6 +122,7 @@ function Translator() {
                 </>
               )}
             </div>
+
           </div>
         </div>
 
